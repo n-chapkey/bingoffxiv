@@ -9,14 +9,18 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "^13.4.0",
+    "next": "^14.2.14",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "socket.io": "^4.8.0",
+    "socket.io-client": "^4.8.0",
+    "use-fit-text": "^2.4.0"
   },
   "devDependencies": {
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/socket.io-client": "^1.4.36",
     "eslint": "^8",
     "eslint-config-next": "14.2.14",
     "postcss": "^8",

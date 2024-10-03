@@ -3,10 +3,12 @@
 import { Task } from '@/types';
 import React, { useEffect, useState } from 'react';
 import sampleBingo from '@/data/sampleBingo.json';
+import BingoCell from '../widgets/bingocell';
 
 const BingoBoard: React.FC = () => {
     const [tasks, setTasks] = useState<Task[]>([]);
     const [error, setError] = useState<string | null>(null);
+
 
     useEffect(() => {
         async function fetchData() {
@@ -26,7 +28,7 @@ const BingoBoard: React.FC = () => {
     }, [tasks]);
 
     return (
-        <div>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <h1>Bingo Board</h1>
             {error && <p>{error}</p>}
             <div style={{ 
@@ -36,29 +38,15 @@ const BingoBoard: React.FC = () => {
                 gridTemplateColumns: 'repeat(5, 1fr)',
                 gridTemplateRows: 'repeat(5, 1fr)',
                 gridAutoFlow: 'column',
-
             }}>
                 {tasks.map((task, index) => (
-                    <div key={index} 
-                    style={{
-                        border: '3px solid black',
-                        padding: '10px',
-                        width: '100px', // Fixed width
-                        height: '100px', // Fixed height
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        overflow: 'hidden',
-                        textAlign: 'center',
-                        wordWrap: 'break-word',
-                        boxSizing: 'border-box' // Include border in the element's total width and height
-                    }}>
-                        {task.name}
-                    </div>
+                    <BingoCell key={index} taskName={task.name} />
                 ))}
             </div>
         </div>
     );
 };
+
+
 
 export default BingoBoard;
